@@ -14,9 +14,9 @@ export default class Yourprofile extends Component {
         this.state = {
            data:[],
             errors: {}
-            
+
         }
-     
+
     }
 
 
@@ -29,76 +29,79 @@ export default class Yourprofile extends Component {
                 "Content-Type": "application/json",
                 "authorization": "bearer "+ token
               }
-          
-          }) 
+
+          })
           .then(response => {
             return response.json();
           })
           .then((data)=> {
             console.log(data);
             this.setState({
-                customerName:data.result.customerName,
-                comment:data.result.comment
-                
+                data:data.result
+
             });
            // console.log(this.state.fname)
-          })   
-         
+          })
+
    }
     render()
-    
+
     {
-    
+
         return (
-          
-           
+
+
             <div style={{ marginRight:"100px", marginLeft:"-200px",padding:"50px",marginTop:"200px"}}>
 
             <Navbar1/>
             <Container >
-            
+
             <Row>
-           
+
             <Col >
             <p className="h5 text-left mb-4 blue-text"  style={{ marginTop:"-200px",marginLeft:"150px"}}>Customer Feedback</p>
            </Col>
           <Col >
             <form onSubmit={ this.handleSubmit } class="form-horizontal">
-            
-           
-            <Card style={{marginTop:"-200px" ,width:"600px" , marginLeft:"350px",backgroundColor:"rgba(186,229,240,0.8)"}}>
-            
-                <CardBody>
-                 
-              
-                
 
-                 <div className="form-group row">
-                    <label >Customer Name</label>
-                    <div className="col-sm-9">
-                    <input type="text"  class="form-control-plaintext"  value={ this.state.customerName }/>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label >Feedback</label>
-                    <div className="col-sm-9">
-                    <input type="text"  class="form-control-plaintext"  value={ this.state.comment }/>
-                    </div>
-                </div>
-  
+
+            <Card style={{marginTop:"-200px" ,width:"600px" , marginLeft:"350px",backgroundColor:"rgba(186,229,240,0.8)"}}>
+
+                <CardBody>
+
+
+
+
+                {this.state.data.map(function(item, key) {
+
+                    return(
+
+                        <Card key = { key } style={{width: '500px',backgroundColor: '#80D71E', marginBottom:"50px" }}>
+
+
+
+                        Customer Name : <label >{item.customerName}</label><br/>
+                        Comment : <label>{item.comment}</label><br/>
+
+
+
+                   </Card>
+                    )
+                })}
+
                 </CardBody>
                 </Card>
             </form>
-           
-          </Col> 
+
+          </Col>
         </Row>
         {/* <Footerpage/> */}
-        
+
         </Container>
-        
+
     </div>
-  
-   
+
+
 
         );
     }

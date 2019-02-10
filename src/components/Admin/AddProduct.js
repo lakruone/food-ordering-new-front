@@ -93,7 +93,7 @@ handleUpload = () => {
 
 
     //e-event
-    handleSubmit(e) {
+    handleSubmit(e,a) {
         e.preventDefault();
         const user = {
             productName: this.state.productName,
@@ -125,7 +125,7 @@ handleUpload = () => {
                 console.log("ok");
                 console.log(response.json());
                 window.alert('Product added Successsfuly...!')
-                window.location.reload();
+                a.history.push('/adminhome')
             }
             else if(response.status === 400){
              console.log("damn");
@@ -221,7 +221,7 @@ handleUpload = () => {
 
 
                 <div className="text-center" style={{color:'white'}}>
-                    <Button type="submit" onClick={ this.handleSubmit.bind(this) }>Submit</Button>
+                    <Button type="submit" onClick={(e)=> this.handleSubmit(e,this.props) }>Submit</Button>
                 </div>
             </form>
            </CardBody>
