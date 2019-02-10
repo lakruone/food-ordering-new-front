@@ -115,6 +115,7 @@ class NewProject extends Component{
                                         <img src={item.imgDetail || "https://via.placeholder.com/300"} alt="Uploaded Images" height="300" width="400"/>
                                         Product Name : <label >{item.productName}</label><br/>
                                         Quentity Available : <label>{item.qtyAvailable}</label><br/>
+                                        Purchased Amount : <label>{item.purchaseAmount}</label><br/>
                                         Price : <label>{item.price}</label><br/>
                                         Description : <label>{item.description}</label>
                                     </div>
